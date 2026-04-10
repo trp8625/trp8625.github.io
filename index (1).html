@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tanvi Patel</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,400;1,700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --cream: #f2ece2;
+  --off-white: #faf7f2;
+  --warm-mid: #e8e0d0;
+  --bark: #9a8472;
+  --espresso: #1e1610;
+  --ink: #2c2318;
+  --rust: #8b3a2a;
+  --rust-light: #c4604a;
+  --gold: #b8945a;
+  --block-bg: #f5f0e8;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { font-family: 'DM Sans', sans-serif; background: var(--off-white); color: var(--ink); overflow-x: hidden; }
+
+/* ── NAV ── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 clamp(1.5rem, 5vw, 4rem); height: 56px;
+  background: rgba(250,247,242,0.95); backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--warm-mid);
+}
+.nav-name {
+  font-family: 'DM Sans', sans-serif; font-size: 0.72rem; font-weight: 500;
+  letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink); text-decoration: none;
+}
+.nav-links { display: flex; gap: 2rem; list-style: none; }
+.nav-links a {
+  font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--bark); text-decoration: none; transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--rust); }
+
+/* ── HERO ── */
+#hero {
+  min-height: 100vh; background: var(--espresso);
+  display: flex; flex-direction: column; justify-content: flex-end;
+  padding-top: 56px; position: relative; overflow: hidden;
+}
+.hero-inner {
+  padding: clamp(3rem,6vw,6rem) clamp(2rem,8vw,8rem) clamp(4rem,7vw,7rem);
+  max-width: 900px; position: relative; z-index: 2;
+}
+.hero-photo {
+  width: 220px; height: 220px; border-radius: 50%; overflow: hidden;
+  margin-bottom: 1.75rem; border: 2px solid rgba(242,236,226,0.12);
+  flex-shrink: 0;
+}
+.hero-photo img { width: 100%; height: 100%; object-fit: cover; object-position: center top; }
+h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(3.8rem,7vw,7rem); font-weight: 900;
+  color: var(--cream); line-height: 0.92; letter-spacing: -0.02em; margin-bottom: 1.25rem;
+}
+h1 em { font-style: italic; font-weight: 700; color: var(--rust-light); display: block; }
+.hero-sub {
+  font-size: 0.78rem; color: rgba(242,236,226,0.4);
+  line-height: 1.6; max-width: 520px; font-weight: 400;
+  letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 2.5rem;
+}
+.hero-cta-row { display: flex; gap: 1rem; align-items: center; flex-wrap: wrap; }
+.btn-hero {
+  display: inline-block; border: 0.5px solid rgba(242,236,226,0.25); color: var(--cream);
+  padding: 0.65rem 1.5rem; font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase;
+  text-decoration: none; transition: background 0.2s, border-color 0.2s;
+}
+.btn-hero:hover { background: var(--rust); border-color: var(--rust); }
+.btn-hero-ghost {
+  font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase;
+  color: rgba(242,236,226,0.3); text-decoration: none; transition: color 0.2s;
+}
+.btn-hero-ghost:hover { color: var(--cream); }
+.hero-strip {
+  position: absolute; bottom: 0; left: 0; right: 0; height: 50px;
+  border-top: 0.5px solid rgba(255,255,255,0.07);
+  display: flex; align-items: center; padding: 0 clamp(2rem,8vw,8rem);
+  justify-content: space-between; z-index: 2;
+}
+.hero-strip-item { font-size: 0.6rem; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(242,236,226,0.22); }
+
+/* ── SECTION BLOCKS ── */
+section { border-top: 1px solid var(--warm-mid); }
+section:nth-child(even) { background: var(--block-bg); }
+section:nth-child(odd) { background: var(--off-white); }
+#hero { border-top: none; }
+
+.section-inner {
+  max-width: 960px; margin: 0 auto;
+  padding: clamp(4rem,8vw,6rem) clamp(1.5rem,8vw,4rem);
+  display: grid; grid-template-columns: 220px 1fr; gap: 4rem; align-items: start;
+}
+
+.section-label-col {}
+.section-label {
+  font-size: 0.65rem; letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--bark); font-weight: 500; position: sticky; top: 80px;
+}
+
+.section-content {}
+
+h2 {
+  font-family: 'Playfair Display', serif; font-weight: 900; font-size: clamp(1.8rem,3vw,2.4rem);
+  color: var(--espresso); line-height: 1.1; letter-spacing: -0.02em; margin-bottom: 1.75rem;
+}
+h2 em { font-style: italic; color: var(--rust); }
+
+/* ── ABOUT ── */
+.about-name {
+  font-family: 'Playfair Display', serif; font-size: clamp(2rem,3.5vw,2.8rem); font-weight: 900;
+  color: var(--espresso); line-height: 1.05; letter-spacing: -0.02em; margin-bottom: 1.75rem;
+}
+.about-name em { font-style: italic; color: var(--rust); }
+
+.about-body p {
+  font-size: 0.94rem; color: var(--bark); line-height: 1.9; font-weight: 300; margin-bottom: 1.25rem;
+}
+.about-body p:last-child { margin-bottom: 0; }
+.about-body strong { color: var(--ink); font-weight: 500; }
+
+/* ── EXPERIENCE ── */
+.exp-list { display: flex; flex-direction: column; gap: 0; }
+.exp-item {
+  padding: 1.75rem 0; border-bottom: 0.5px solid var(--warm-mid);
+  display: flex; flex-direction: column; gap: 0.4rem;
+}
+.exp-item:first-child { padding-top: 0; }
+.exp-header { display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem; flex-wrap: wrap; }
+.exp-role { font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 700; color: var(--espresso); }
+.exp-date { font-size: 0.7rem; letter-spacing: 0.08em; color: var(--bark); font-weight: 300; white-space: nowrap; }
+.exp-org { font-size: 0.78rem; color: var(--rust); letter-spacing: 0.05em; font-weight: 500; text-transform: uppercase; }
+.exp-location { font-size: 0.75rem; color: var(--bark); font-weight: 300; }
+.exp-bullets { margin-top: 0.75rem; padding-left: 1rem; display: flex; flex-direction: column; gap: 0.4rem; }
+.exp-bullets li { font-size: 0.88rem; color: var(--bark); line-height: 1.75; font-weight: 300; }
+
+/* ── PUBLICATIONS ── */
+.pub-list { display: flex; flex-direction: column; }
+.pub-item {
+  padding: 1.75rem 0; border-bottom: 0.5px solid var(--warm-mid);
+  display: flex; flex-direction: column; gap: 0.35rem;
+}
+.pub-item:first-child { padding-top: 0; }
+.pub-type { font-size: 0.62rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--rust); font-weight: 500; }
+.pub-title { font-family: 'Playfair Display', serif; font-size: 0.98rem; font-weight: 700; color: var(--espresso); line-height: 1.4; }
+.pub-authors { font-size: 0.8rem; color: var(--bark); font-weight: 300; line-height: 1.6; }
+.pub-authors strong { color: var(--ink); font-weight: 500; }
+.pub-venue { font-size: 0.8rem; color: var(--bark); font-style: italic; }
+.pub-link { margin-top: 0.25rem; }
+.pub-link a {
+  font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--bark);
+  text-decoration: none; border-bottom: 0.5px solid var(--warm-mid); padding-bottom: 1px;
+  transition: color 0.2s, border-color 0.2s;
+}
+.pub-link a:hover { color: var(--rust); border-color: var(--rust); }
+
+/* ── SKILLS ── */
+.skills-block { display: flex; flex-direction: column; gap: 1.5rem; }
+.skill-group {}
+.skill-group-label {
+  font-size: 0.62rem; letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--bark); font-weight: 500; margin-bottom: 0.75rem;
+}
+.skill-tags { display: flex; flex-wrap: wrap; gap: 0.45rem; }
+.skill-tag {
+  font-size: 0.75rem; padding: 0.3rem 0.85rem;
+  border: 0.5px solid var(--warm-mid); color: var(--bark);
+  background: transparent; letter-spacing: 0.03em;
+  transition: border-color 0.2s, color 0.2s; cursor: default;
+}
+.skill-tag:hover { border-color: var(--rust); color: var(--rust); }
+
+/* ── TRAVELS ── */
+.travels-grid {
+  display: grid; grid-template-columns: repeat(5, 1fr); gap: 3px;
+}
+.travel-slot {
+  aspect-ratio: 1; background: var(--warm-mid); overflow: hidden;
+  position: relative; cursor: pointer;
+}
+.travel-slot img {
+  width: 100%; height: 100%; object-fit: cover; display: block;
+  transition: transform 0.4s ease;
+}
+.travel-slot:hover img { transform: scale(1.04); }
+.travel-placeholder {
+  width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;
+  color: var(--bark); font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase;
+  flex-direction: column; gap: 0.5rem;
+}
+.travel-upload-note {
+  margin-top: 1.5rem; font-size: 0.78rem; color: var(--bark); font-weight: 300; font-style: italic;
+}
+
+/* ── CONTACT ── */
+.contact-links { display: flex; flex-direction: column; gap: 0; }
+.contact-link {
+  display: flex; align-items: center; gap: 1rem; color: var(--bark); text-decoration: none;
+  font-size: 0.88rem; padding: 1rem 0; border-bottom: 0.5px solid var(--warm-mid);
+  transition: color 0.2s;
+}
+.contact-link:first-child { border-top: 0.5px solid var(--warm-mid); }
+.contact-link:hover { color: var(--rust); }
+.cl-icon {
+  width: 32px; height: 32px; border: 0.5px solid var(--warm-mid);
+  display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: border-color 0.2s;
+}
+.contact-link:hover .cl-icon { border-color: var(--rust); }
+.cl-icon svg { width: 14px; height: 14px; stroke: currentColor; fill: none; stroke-width: 1.5; }
+
+/* ── FOOTER ── */
+footer {
+  background: var(--espresso); padding: 1.5rem clamp(1.5rem,8vw,4rem);
+  display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem;
+  border-top: 1px solid rgba(255,255,255,0.06);
+}
+footer span { font-size: 0.62rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(242,236,226,0.2); }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 720px) {
+  .section-inner { grid-template-columns: 1fr; gap: 1.5rem; }
+  .section-label { position: static; }
+  .travels-grid { grid-template-columns: repeat(2,1fr); }
+  .nav-links { display: none; }
+  .exp-header { flex-direction: column; gap: 0.2rem; }
+}
+
+/* ── FADE IN ── */
+.fade-up { opacity: 0; transform: translateY(18px); transition: opacity 0.55s ease, transform 0.55s ease; }
+.fade-up.visible { opacity: 1; transform: none; }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#hero" class="nav-name">Tanvi Patel</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#publications">Publications</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#travels">Travels</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-inner">
+    <div class="hero-photo">
+      <img src="headshot.png" alt="Tanvi Patel">
+    </div>
+    <h1>
+      Tanvi<br>
+      <em>Patel.</em>
+    </h1>
+    <p class="hero-sub">Incoming MSDS at Columbia &nbsp;|&nbsp; Data Science &amp; Chemistry at NYU</p>
+    <div class="hero-cta-row">
+      <a href="#about" class="btn-hero">Learn more</a>
+      <a href="#contact" class="btn-hero-ghost">Get in touch →</a>
+    </div>
+  </div>
+  <div class="hero-strip">
+    <span class="hero-strip-item">New York City</span>
+    <span class="hero-strip-item">Columbia MSDS · Fall 2026</span>
+    <span class="hero-strip-item">ML · NLP · Geospatial</span>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-inner">
+    <div class="section-label-col">
+      <p class="section-label">About</p>
+    </div>
+    <div class="section-content fade-up">
+      <h2 class="about-name">Who I <em>am.</em></h2>
+      <div class="about-body">
+        <p>
+          As an incoming M.S. in Data Science student at <strong>Columbia University</strong>, I aim to build a career at the intersection of machine learning, sustainability, and social good. My experience in ML research at <strong>Mount Sinai School of Medicine</strong> has taught me that rigorous, human-centered data science — particularly when applied to complex clinical populations — requires both technical depth and ethical intentionality. Working on NLP-driven psychiatric research showed me how AI can surface patterns in human behavior that genuinely inform care, and deepened my commitment to deploying models responsibly.
+        </p>
+        <p>
+          My current work as an <strong>ML Engineer at CropGuardian</strong> has taken that conviction into the world of climate tech. Building Sentinel-2 satellite imagery pipelines for crop health monitoring and deforestation detection has shown me how machine learning, when applied to Earth observation data, can become a real tool for environmental accountability — not just a technical exercise.
+        </p>
+        <p>
+          I am about to receive my <strong>B.A. in Data Science</strong> from New York University's Courant Institute of Mathematical Sciences, with a minor in Chemistry, where I will receive research honors for my work at Mount Sinai. I plan to bring my experience and passion to Columbia University's M.S. in Data Science program this fall.
+        </p>
+        <p>
+          Outside of engineering, I am passionate about fostering cats, traveling, and having a creative outlet.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="section-inner">
+    <div class="section-label-col">
+      <p class="section-label">Experience</p>
+    </div>
+    <div class="section-content">
+
+      <div class="exp-list">
+
+        <div class="exp-item fade-up">
+          <div class="exp-header">
+            <span class="exp-role">Machine Learning Engineer</span>
+            <span class="exp-date">2024 – Present</span>
+          </div>
+          <span class="exp-org">CropGuardian</span>
+          <ul class="exp-bullets">
+            <li>Build and maintain end-to-end ML pipelines on Sentinel-2 multispectral satellite imagery for crop health classification and anomaly detection across agricultural regions.</li>
+            <li>Developed a multi-temporal deforestation detection pipeline using Sentinel-1 SAR data, Hansen Global Forest Change, and NDVI time series over Cacoal, Rondônia, Brazil.</li>
+            <li>Co-authored work accepted to <strong>The International Astronautical Congress</strong>, presenting geospatial ML approaches to Earth observation for agricultural sustainability.</li>
+            <li>Collaborated with a cross-functional team including domain scientists and engineers to productionize satellite-based monitoring tools for real-world environmental decision-making.</li>
+          </ul>
+        </div>
+
+        <div class="exp-item fade-up">
+          <div class="exp-header">
+            <span class="exp-role">Machine Learning Intern</span>
+            <span class="exp-date">Aug 2024 – Present</span>
+          </div>
+          <span class="exp-org">Mount Sinai School of Medicine</span>
+          <span class="exp-location">New York, NY</span>
+          <ul class="exp-bullets">
+            <li>Built an end-to-end NLP data pipeline in Python to ingest, clean, featurize, and classify 500+ patient text responses; automated dataset labeling via GPT-4o and Gemini annotation, eliminating hours of manual effort.</li>
+            <li>Engineered a multi-output NLP classification system (TF-IDF + psycholinguistic features) using Logistic Regression, Random Forest, and LinearSVC to predict sentiment and agency locus across patient responses.</li>
+            <li>Conducted Kruskal-Wallis with post-hoc Dunn tests across 50 psychiatric labels, revealing that negative sentiment significantly predicted higher rumination and lower anticipatory pleasure; presented at BMEII AI/ML Symposium.</li>
+          </ul>
+        </div>
+
+        <div class="exp-item fade-up">
+          <div class="exp-header">
+            <span class="exp-role">Data Analyst Intern</span>
+            <span class="exp-date">Jan 2023 – July 2024</span>
+          </div>
+          <span class="exp-org">South Asian Health and Research Lab (SAHARA), NYU</span>
+          <span class="exp-location">New York, NY</span>
+          <ul class="exp-bullets">
+            <li>Cleaned and joined survey and social media metadata from 175+ participants in SQL; applied chi-square testing to identify chatbot engagement drivers, contributing findings to a peer-reviewed publication in JMIR Research.</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-inner">
+    <div class="section-label-col">
+      <p class="section-label">Projects</p>
+    </div>
+    <div class="section-content">
+      <div class="exp-list">
+        <!-- Projects go here — let me know what to add! -->
+        <div class="exp-item fade-up">
+          <div class="exp-header">
+            <span class="exp-role">Projects coming soon</span>
+          </div>
+          <p style="font-size:0.88rem;color:var(--bark);font-weight:300;margin-top:0.5rem;">Tell me what to include here and I'll fill this in.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PUBLICATIONS -->
+<section id="publications">
+  <div class="section-inner">
+    <div class="section-label-col">
+      <p class="section-label">Publications</p>
+    </div>
+    <div class="section-content">
+      <div class="pub-list">
+
+        <div class="pub-item fade-up">
+          <p class="pub-type">Conference Presentation</p>
+          <p class="pub-title">Investigating the Role of Sentiment in Motivational Strategies: Transformer-Based Models</p>
+          <p class="pub-authors"><strong>Patel, Tanvi.</strong></p>
+          <p class="pub-venue">BMEII AI/ML Symposium and NYU Undergraduate Research Conference, 2025</p>
+        </div>
+
+        <div class="pub-item fade-up">
+          <p class="pub-type">Peer-Reviewed Article</p>
+          <p class="pub-title">Targeting the Dopaminergic Midbrain with Precision 7-Tesla Biofeedback Training in Depression: A Proof-of-Principle Randomized Controlled Trial</p>
+          <p class="pub-authors">Morris, L. S., Beltran, J., Kvamme, T., Butler, G., Adams, A., <strong>Patel, T.</strong>, Obie, E., Fontaine, S., Corniquel, M., Fleysher, L., &amp; Murrough, J. W. (2025).</p>
+          <p class="pub-venue">Icahn School of Medicine at Mount Sinai</p>
+        </div>
+
+        <div class="pub-item fade-up">
+          <p class="pub-type">Peer-Reviewed Article</p>
+          <p class="pub-title">Rapid, Tailored Dietary and Health Education Through A Social Media Chatbot Microintervention: Development and Usability Study With Practical Recommendations</p>
+          <p class="pub-authors">Ali SH, Rahman F, Kuwar A, Khanna T, Sharma P, Dasraj S, <strong>Patel T</strong>, Dhar B.</p>
+          <p class="pub-venue">JMIR Formative Research, 2024;8:e52032</p>
+          <p class="pub-link"><a href="https://formative.jmir.org/2024/1/e52032" target="_blank">Read paper →</a></p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section-inner">
+    <div class="section-label-col">
+      <p class="section-label">Skills</p>
+    </div>
+    <div class="section-content fade-up">
+      <div class="skills-block">
+        <div class="skill-group">
+          <p class="skill-group-label">Languages</p>
+          <div class="skill-tags">
+            <span class="skill-tag">Python</span>
+            <span class="skill-tag">SQL</span>
+            <span class="skill-tag">Java</span>
+            <span class="skill-tag">R</span>
+            <span class="skill-tag">JavaScript</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <p class="skill-group-label">ML & Data</p>
+          <div class="skill-tags">
+            <span class="skill-tag">PyTorch</span>
+            <span class="skill-tag">scikit-learn</span>
+            <span class="skill-tag">Hugging Face</span>
+            <span class="skill-tag">TensorFlow</span>
+            <span class="skill-tag">MLflow</span>
+            <span class="skill-tag">XGBoost</span>
+            <span class="skill-tag">SHAP</span>
+            <span class="skill-tag">Fairlearn</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <p class="skill-group-label">Geospatial & Earth Observation</p>
+          <div class="skill-tags">
+            <span class="skill-tag">Sentinel-2</span>
+            <span class="skill-tag">Sentinel-1 SAR</span>
+            <span class="skill-tag">Google Earth Engine</span>
+            <span class="skill-tag">NDVI Analysis</span>
+            <span class="skill-tag">Rasterio</span>
+            <span class="skill-tag">GeoPandas</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <p class="skill-group-label">Infrastructure</p>
+          <div class="skill-tags">
+            <span class="skill-tag">FastAPI</span>
+            <span class="skill-tag">Docker</span>
+            <span class="skill-tag">Git</span>
+            <span class="skill-tag">Google Cloud</span>
+            <span class="skill-tag">PostgreSQL</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRAVELS -->
+<section id="travels">
+  <div class="section-inner">
+    <div class="section-label-col">
+      <p class="section-label">Recent Travels</p>
+    </div>
+    <div class="section-content fade-up">
+      <!--
+        TO ADD YOUR PHOTOS:
+        Replace each .travel-placeholder div with:
+        <img src="your-photo.jpg" alt="Location name">
+        inside the .travel-slot div.
+        Recommended: square-crop or portrait photos work best.
+      -->
+      <div class="travels-grid">
+        <div class="travel-slot"><img src="travel1.jpeg" alt="Amsterdam canal bike"></div>
+        <div class="travel-slot"><img src="travel2.jpeg" alt="Amsterdam sunset"></div>
+        <div class="travel-slot"><img src="travel3.jpeg" alt="Icelandic horses"></div>
+        <div class="travel-slot"><img src="travel4.jpeg" alt="Skógafoss waterfall rainbow"></div>
+        <div class="travel-slot"><img src="travel5.jpeg" alt="Northern lights Iceland"></div>
+        <div class="travel-slot"><img src="travel6.jpeg" alt="Glacier hike Iceland"></div>
+        <div class="travel-slot"><img src="travel7.jpeg" alt="Glacier formations"></div>
+        <div class="travel-slot"><img src="travel8.jpeg" alt="Ice cave Iceland"></div>
+        <div class="travel-slot"><img src="travel9.jpeg" alt="Black sand beach Iceland"></div>
+        <div class="travel-slot"><img src="travel10.jpeg" alt="Seljalandsfoss waterfall"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-inner">
+    <div class="section-label-col">
+      <p class="section-label">Contact</p>
+    </div>
+    <div class="section-content fade-up">
+      <h2>Let's <em>connect.</em></h2>
+      <div class="contact-links">
+        <a href="https://www.linkedin.com/in/trp2/" class="contact-link" target="_blank">
+          <span class="cl-icon">
+            <svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+          </span>
+          linkedin.com/in/trp2
+        </a>
+        <a href="https://github.com/trp8625" class="contact-link" target="_blank">
+          <span class="cl-icon">
+            <svg viewBox="0 0 24 24"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.44 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+          </span>
+          github.com/trp8625
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span>© 2026 Tanvi Patel</span>
+  <span>New York City</span>
+</footer>
+
+<script>
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.07 });
+document.querySelectorAll('.fade-up').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>
